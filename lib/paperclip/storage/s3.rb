@@ -373,6 +373,8 @@ module Paperclip
               @s3_metadata.merge!(style_specific_options[:s3_metadata]) if style_specific_options[:s3_metadata]
             end
 
+            merge_s3_headers(@options[:s3_headers], @s3_headers, @s3_metadata)
+
             write_options[:metadata] = @s3_metadata unless @s3_metadata.empty?
             write_options.merge!(@s3_headers)
 
